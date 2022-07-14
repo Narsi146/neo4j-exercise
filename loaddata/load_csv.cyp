@@ -1,3 +1,4 @@
+// Cypher Queries used to load data using LOAD CSV function.
 // Create Customer, AccountNumber and CardNumber node
 // Create relationships for Customer and AccountNumber, and Customer and CardNumber.
 

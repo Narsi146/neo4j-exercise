@@ -38,7 +38,7 @@ docker run \
 ```
 
 ## Data model for the problem statement
-
+![Data Model](datamodel/Bank_customer_transaction.png)
 
 
 ## Script for Loading Data
