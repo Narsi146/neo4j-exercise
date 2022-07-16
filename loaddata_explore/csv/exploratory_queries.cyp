@@ -21,7 +21,7 @@ ORDER BY transferCount
 
 // 4. Top merchant in terms of card purchases for an age band - 20-30yrs
 MATCH (cust :Customer)-[:HAS_CARD]->(:CardNumber)-[p :PURCHASED_AT]->(m :Merchant)
-WHERE toInteger(cust.age) >=20 AND toInteger(cust.age) <= 30
+WHERE toInteger(cust.age) >=20 AND cust.age <= 30
 RETURN DISTINCT m.merchantName AS merchant, sum(p.amount) AS totalPurchasedAmount
 ORDER BY totalPurchasedAmount
 LIMIT 1
@@ -31,7 +31,7 @@ LIMIT 1
 MATCH (acct1 :AccountNumber)-[trans :TRANSFERRED_TO]->(acct2 :AccountNumber)<-[:HAS_ACCOUNT]-(cust :Customer)-[:HAS_CARD]->(card :CardNumber)-[purch :PURCHASED_AT]->(m :Merchant)
 WITH trans.transactionDateTime AS transferDateTime, purch.transactionDateTime AS purchaseDateTime, purch.amount AS purchaseAmount, purch.transactionId AS purchaseTransaction, m.merchantName AS merchantName
 WHERE transferDateTime < purchaseDateTime < transferDateTime + duration({hours: 1})
-RETURN purchaseTransaction, purchaseAmount, merchantName, "Potential Fraud" AS statusFlag
+RETURN purchaseTransaction, purchaseAmount, merchantName, "Verify Transaction" AS statusFlag
 ;
 
 // The above query (5) can be improved a bit faster by adding potential relationship between accountnumber and card number that is shared by customer.
