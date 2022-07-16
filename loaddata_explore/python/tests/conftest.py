@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import sys
 
 # Append your local path for python directory
-sys.path.append(r"D:\Narsi\jobs\neo4j\experiment\loaddata_explore\python")
+sys.path.append(r"./python")
 
 from data.driver import Neo4jDriver
 

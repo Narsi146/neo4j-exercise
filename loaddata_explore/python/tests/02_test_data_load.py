@@ -19,8 +19,9 @@ def test_env_vars():
 
 def test_load_data():
     """Check whether are you able to load data"""
+    # Update loaddata.py
     result = os.system(
-        r"python D:\Narsi\jobs\neo4j\experiment\loaddata_explore\python\data\loaddata.py"
+        r"python ./data/loaddata.py"
     )
     assert result == 0
 
