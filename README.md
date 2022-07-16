@@ -37,15 +37,24 @@ docker run \
     neo4j:enterprise
 ```
 
+Logon to Neo4j Browser and make sure to create a database.
+
 ## Data model for the problem statement
 ![Data Model](datamodel/Bank_customer_transaction.png)
 
 
 ## Script for Loading Data
+Coding:
+driver has the Driver class
+loaddata to load data
 
+
+
+Testing:
+
+Conftest.py update the syspath
+02 test update path
+
+black & flake8
 
 ## Exploratory Queries
-
-
-[Data Model](https://google.com)
-![Data Model](https://google.com)
