@@ -38,10 +38,12 @@ docker run \
 ```
 
 Logon to Neo4j Browser and make sure to create a database.
-For this demo the have used db name `tester`
+For this demo have used db name `tester`
 
 ## Data model for the problem statement
-Below is the data model, the json export can found at `datamodel/Bank_customer_transaction.json`
+Below is the data model, the json export can found at 
+\
+`datamodel/Bank_customer_transaction.json`
 \
 \
 ![Data Model](datamodel/Bank_customer_transaction.png)
@@ -53,17 +55,58 @@ Below are the considerations for the data model:
 - Account and Card can have relationship link (for eg. sharing customer number) if there are more transfer to purchase relationship analysis.
 
 ## Script for Loading Data
-Coding:
-driver has the Driver class
-loaddata to load data
 
+The data ingestion has been performed with both Cypher (csv) and Python:
 
+- `loaddata_explore\csv` - contains cypher based dataload and exploration queries.
+- `loaddata_explore\python` - contains python based dataload and exploration queries.
+    - `data` - folder contains main data load files: 
+        - **`driver.py`** that returns driver
+        - **`loaddata.py`** downloads and loads the file - where main function acts as orchestration.
+    - `tests` - contains the tests to both driver and loaded data
+    - **`Explore.ipynb`** - contains the result of exploratory queries executed.
+    - `black` - package has been used for formatting
+    - `flake8` - package has been used for linting
+    - `requirements.txt` - packages used for coding
+    -  `env.example` - sample environment file
 
-Testing:
+### Steps for executing python code:
 
-Conftest.py update the syspath
-02 test update path
-
-black & flake8
+1. **Load Data** - To load follow below steps:
+    - Ensure Neo4j Enterprise is up and running.
+    - Update Neo4j URL, User and Pass in `.env.example`
+    - Copy `.env.example' to .env
+    - Execute `loaddata.py` python file
+    - Check database for data.
+2.  **Testing** - to test driver and data run below steps:
+    - Update syspath in `tests/conftest.py` and path in `tests\02_test_data_load.py`
+    - Execute `tests\01_test_neo4j_connectivity.py` file for testing driver.
+    - Execute `tests\02_test_data_load.py` file to test loaded data
+        - Note: the above test will load data as it executes `loaddata.py`, comment `test_load_data` test to stop loading data.
 
 ## Exploratory Queries
+
+Once Data is loaded execute the jupyter note at `loadata_explore/python/Explore.ipynb` to gather results of the 5 exploratory queries.
+
+##### Below is a snapshot of results for the 5 queries:
+
+###### Result of Query 1
+![Result1](exploratory_queries_results_images/query_1.JPG)
+
+###### Result of Query 2
+![Result2](exploratory_queries_results_images/query_2.JPG)
+
+###### Result of Query 3
+![Result3](exploratory_queries_results_images/query_3.JPG)
+
+###### Result of Query 4
+![Result4](exploratory_queries_results_images/query_4.JPG)
+
+###### Result of Query 5
+![Result5](exploratory_queries_results_images/query_5.JPG)
+
+#### Considerations for the exercise:
+- No Index were set, but is a good practice to set index per node that helps identify unique node. A good example would be CIF for Customer table.
+- Data model may vary based on use cases.
+- The data load and exploration, can also be executed using cypher queries.
+- Visual Studio Code was used for the development.

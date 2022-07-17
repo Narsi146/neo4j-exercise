@@ -23,6 +23,7 @@ class Neo4jDriver:
         db : database name
 
     """
+
     def __init__(self, uri, user, pwd):
         self.__driver = None
         try:
@@ -59,7 +60,7 @@ class Neo4jDriver:
 
 
 if __name__ == "__main__":
-    """ Test connectivity in isolation"""
+    """Test connectivity in isolation"""
     load_dotenv()
     conn = Neo4jDriver(
         os.environ.get("NEO4J_URI"),

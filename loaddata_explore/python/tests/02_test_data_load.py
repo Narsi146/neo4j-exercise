@@ -19,9 +19,7 @@ def test_env_vars():
 def test_load_data():
     """Check whether are you able to load data"""
     # ---- Update loaddata.py path and remove this comment ----
-    result = os.system(
-        r"python ./data/loaddata.py"
-    )
+    result = os.system(r"python ./data/loaddata.py")
     assert result == 0
 
 
