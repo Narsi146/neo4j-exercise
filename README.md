@@ -59,12 +59,14 @@ Below are the considerations for the data model:
 The data ingestion has been performed with both Cypher (csv) and Python:
 
 - `loaddata_explore\csv` - contains cypher based dataload and exploration queries.
+    - `load_csv.cyp` - is used to load data
+    - `exploratory_queries.cyp` - are the queries used for exploration\ 
 - `loaddata_explore\python` - contains python based dataload and exploration queries.
     - `data` - folder contains main data load files: 
-        - **`driver.py`** that returns driver
-        - **`loaddata.py`** downloads and loads the file - where main function acts as orchestration.
+        - **`driver.py`** that returns driver class instance
+        - **`loaddata.py`** downloads and loads the file - where main function acts as orchestration
     - `tests` - contains the tests to both driver and loaded data
-    - **`Explore.ipynb`** - contains the result of exploratory queries executed.
+    - **`Explore.ipynb`** - contains the result of exploratory queries executed
     - `black` - package has been used for formatting
     - `flake8` - package has been used for linting
     - `requirements.txt` - packages used for coding
