@@ -1,3 +1,4 @@
+// Below is the list of queries per initial use cases and used to run against database.
 // 1. Top 5 customers in terms of card purchases (max. amount)
 MATCH (cust :Customer)-[:HAS_CARD]->(card :CardNumber)-[p :PURCHASED_AT]->(m :Merchant)
 RETURN DISTINCT cust.firstName+" "+cust.lastName AS customerName,sum(p.amount) AS totalPurchaseAmount

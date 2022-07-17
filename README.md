@@ -38,10 +38,19 @@ docker run \
 ```
 
 Logon to Neo4j Browser and make sure to create a database.
+For this demo the have used db name `tester`
 
 ## Data model for the problem statement
+Below is the data model, the json export can found at `datamodel/Bank_customer_transaction.json`
+\
+\
 ![Data Model](datamodel/Bank_customer_transaction.png)
-
+\
+\
+Below are the considerations for the data model:
+- Account and Card have been separated to enable future account and card additions to a customer
+- Customer address can be separated out as separate entity but in this use case is limited need for address info, hence not loaded to graph database.
+- Account and Card can have relationship link (for eg. sharing customer number) if there are more transfer to purchase relationship analysis.
 
 ## Script for Loading Data
 Coding:

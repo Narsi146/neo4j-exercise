@@ -5,8 +5,24 @@ from neo4j import GraphDatabase
 
 
 class Neo4jDriver:
-    """ """
+    """
+    Returns Neo4j driver instance, initiate with following args:
+    uri : URL for Neo4j
+    user, pwd : username and password
 
+    The following methods can be used with the Class instance:
+
+    close() : closes the driver
+
+    verify_driver() : verifies connectivity to driver
+
+    query(query, parameters, db) : returns running a query run
+    against Neo4j.
+        query : is the query to run against database
+        parameters : pass various parameters for examples data rows
+        db : database name
+
+    """
     def __init__(self, uri, user, pwd):
         self.__driver = None
         try:
@@ -43,7 +59,7 @@ class Neo4jDriver:
 
 
 if __name__ == "__main__":
-    """ """
+    """ Test connectivity in isolation"""
     load_dotenv()
     conn = Neo4jDriver(
         os.environ.get("NEO4J_URI"),
@@ -52,4 +68,3 @@ if __name__ == "__main__":
     )
     assert conn.verify_driver() is not None, "Failed"
     conn.close()
-    print(dir(conn))

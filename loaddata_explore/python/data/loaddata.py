@@ -5,7 +5,11 @@ from driver import Neo4jDriver
 
 
 def add_customers(link, conn, db=None):
-    """Adds customer nodes to the Neo4j graph as a batch job."""
+    """
+    Adds customer, account & card nodes to the Neo4j databse as a batch job.
+    Also create relationships between customer and account, customer and
+    card.
+    """
     rows = pd.read_csv(link)
     query = """
             UNWIND $rows AS row
@@ -21,7 +25,10 @@ def add_customers(link, conn, db=None):
 
 
 def add_purchases(link, conn, db=None):
-    """Adds customer nodes to the Neo4j graph as a batch job."""
+    """
+    Adds merchant name and create relationships between merchan and
+    card used for purchases.
+    """
     rows = pd.read_csv(link)
     query = """
             UNWIND $rows AS row
@@ -36,7 +43,9 @@ def add_purchases(link, conn, db=None):
 
 
 def add_transfers(link, conn, db=None):
-    """Adds customer nodes to the Neo4j graph as a batch job."""
+    """
+    Adds accounts to accounts transfer relationships.
+    """
     rows = pd.read_csv(link)
     query = """
             UNWIND $rows AS row
@@ -50,7 +59,9 @@ def add_transfers(link, conn, db=None):
 
 
 def insert_data(query, rows, conn=None, db=None):
-    # Function to handle the updating the Neo4j database in batch mode.
+    """
+    Function insert data through pandas dataframe converted to dictionary.
+    """
     results = None
     try:
         results = conn.query(query, parameters={"rows": rows.to_dict("records")}, db=db)
@@ -64,8 +75,12 @@ def insert_data(query, rows, conn=None, db=None):
 
 
 if __name__ == "__main__":
-    """ """
+    """
+    Main orchestration function to download data and load it into
+    Neo4j database.
+    """
     load_dotenv()
+
     conn = Neo4jDriver(
         os.environ.get("NEO4J_URI"),
         os.environ.get("NEO4J_USERNAME"),

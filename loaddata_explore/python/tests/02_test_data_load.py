@@ -2,7 +2,7 @@ import os
 
 
 def query_data(query, conn=None, db=None):
-    # Function to handle the updating the Neo4j database in batch mode.
+    """Runs the query and returns results"""
     results = None
     results = conn.query(query, db=db)
     return results
@@ -10,7 +10,6 @@ def query_data(query, conn=None, db=None):
 
 def test_env_vars():
     """Test that environment variables have been set"""
-
     assert "DB" in os.environ
     assert "CUSTOMERDATA" in os.environ
     assert "TRANSFERDATA" in os.environ
@@ -19,7 +18,7 @@ def test_env_vars():
 
 def test_load_data():
     """Check whether are you able to load data"""
-    # Update loaddata.py
+    # ---- Update loaddata.py path and remove this comment ----
     result = os.system(
         r"python ./data/loaddata.py"
     )
@@ -27,7 +26,7 @@ def test_load_data():
 
 
 def test_customer_account_counts(conn):
-    """Check whether are you able to load data"""
+    """Check for Customer, Accounts and HAS_ACCOUNT Relationship counts"""
     query = """MATCH (n :Customer)-[r: HAS_ACCOUNT]->(a :AccountNumber)
     RETURN COUNT(n) as totalCustomers, COUNT(r) as totalRelationships, count(a) as totalAccounts;
     """
@@ -38,7 +37,7 @@ def test_customer_account_counts(conn):
 
 
 def test_transfer_account_counts(conn):
-    """Check whether are you able to load data"""
+    """Check for Accounts and transfer counts"""
     query = """MATCH (acct1 :AccountNumber)-[r: TRANSFERRED_TO]->(acct2 :AccountNumber)
     RETURN COUNT(distinct(acct1)) as sourceAcctCount, COUNT(r) as totalTransfers, count(distinct(acct2)) as destAcctCount;
     """
@@ -49,7 +48,7 @@ def test_transfer_account_counts(conn):
 
 
 def test_purchase_merchant_counts(conn):
-    """Check whether are you able to load data"""
+    """Check for Cards, Purchased and PURCHASED_AT Relationship counts"""
     query = """MATCH (c :CardNumber)-[r: PURCHASED_AT]->(m :Merchant)
     RETURN COUNT(distinct(c)) as totalCards, COUNT(r) as totalPurchases, count(distinct(m)) as merchantCount;
     """
