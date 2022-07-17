@@ -1,0 +1,265 @@
+{
+  "style": {
+    "font-family": "Nunito Sans",
+    "background-color": "#F2F2F2",
+    "background-image": "",
+    "background-size": "100%",
+    "node-color": "#4C8EDA",
+    "border-width": 0,
+    "border-color": "#000000",
+    "radius": 75,
+    "node-padding": 5,
+    "node-margin": 2,
+    "outside-position": "auto",
+    "node-icon-image": "",
+    "node-background-image": "",
+    "icon-position": "inside",
+    "icon-size": 64,
+    "caption-position": "inside",
+    "caption-max-width": 200,
+    "caption-color": "#ffffff",
+    "caption-font-size": 20,
+    "caption-font-weight": "normal",
+    "label-position": "inside",
+    "label-display": "bare",
+    "label-color": "#ffffff",
+    "label-background-color": "#848484",
+    "label-border-color": "#848484",
+    "label-border-width": 3,
+    "label-font-size": 20,
+    "label-padding": 5,
+    "label-margin": 4,
+    "directionality": "directed",
+    "detail-position": "above",
+    "detail-orientation": "parallel",
+    "arrow-width": 3,
+    "arrow-color": "#848484",
+    "margin-start": 5,
+    "margin-end": 5,
+    "margin-peer": 20,
+    "attachment-start": "normal",
+    "attachment-end": "normal",
+    "relationship-icon-image": "",
+    "type-color": "#848484",
+    "type-background-color": "#F2F2F2",
+    "type-border-color": "#848484",
+    "type-border-width": 0,
+    "type-font-size": 21,
+    "type-padding": 5,
+    "property-position": "outside",
+    "property-alignment": "colon",
+    "property-color": "#848484",
+    "property-font-size": 20,
+    "property-font-weight": "normal"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "position": {
+        "x": -70.16683431957472,
+        "y": 99.66898567878886
+      },
+      "caption": "",
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "cif": "1",
+        "firstName": "Greta",
+        "lastName": "Swan",
+        "age": "26",
+        "jobTitle": "Bellman"
+      },
+      "style": {}
+    },
+    {
+      "id": "n1",
+      "position": {
+        "x": 351.5,
+        "y": -58.952033758140686
+      },
+      "caption": "",
+      "labels": [
+        "AccountNumber"
+      ],
+      "properties": {
+        "accountNumber": "650-63-6154"
+      },
+      "style": {}
+    },
+    {
+      "id": "n2",
+      "position": {
+        "x": 351.5,
+        "y": 258.2900051157184
+      },
+      "caption": "",
+      "labels": [
+        "CardNumber"
+      ],
+      "properties": {
+        "cardNumber": "348-14-6088"
+      },
+      "style": {
+        "label-display": "bare"
+      }
+    },
+    {
+      "id": "n5",
+      "position": {
+        "x": 1425.5599304615273,
+        "y": 229.9679097176413
+      },
+      "caption": "",
+      "labels": [
+        "Merchant"
+      ],
+      "properties": {
+        "merchantName": "Biolife Grup"
+      },
+      "style": {}
+    },
+    {
+      "id": "n6",
+      "position": {
+        "x": 1387.2868432789755,
+        "y": -140.38387424312504
+      },
+      "caption": "",
+      "labels": [
+        "AccountNumber"
+      ],
+      "properties": {
+        "accountNumber": "430-04-5447"
+      },
+      "style": {}
+    },
+    {
+      "id": "n7",
+      "position": {
+        "x": 1357.1338276760473,
+        "y": 636.5854980103351
+      },
+      "caption": "",
+      "labels": [
+        "Merchant"
+      ],
+      "properties": {
+        "merchantName": "Amazon.com"
+      },
+      "style": {}
+    },
+    {
+      "id": "n8",
+      "position": {
+        "x": 1332.8636812494042,
+        "y": -400.14238309295854
+      },
+      "caption": "",
+      "style": {},
+      "labels": [
+        "AccountNumber"
+      ],
+      "properties": {
+        "accountNumber": "\t875-13-4278"
+      }
+    },
+    {
+      "id": "n10",
+      "position": {
+        "x": 1806.3387494930719,
+        "y": -525.1231803164478
+      },
+      "caption": "",
+      "style": {},
+      "labels": [
+        "Customer"
+      ],
+      "properties": {
+        "cif": "2",
+        "firstName": "Rebecca",
+        "lastName": "Corbett",
+        "age": "41",
+        "jobTitle": "Clerk"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "id": "n0",
+      "fromId": "n0",
+      "toId": "n1",
+      "type": "HAS_ACCOUNT",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n1",
+      "fromId": "n0",
+      "toId": "n2",
+      "type": "HAS_CARD",
+      "properties": {},
+      "style": {}
+    },
+    {
+      "id": "n6",
+      "fromId": "n1",
+      "toId": "n6",
+      "type": "TRANSFERRED_TO",
+      "properties": {
+        "transactionId": "287062",
+        "transactionDateTime": "2021-02-21T16:21:49Z",
+        "amount": "8584.094218"
+      },
+      "style": {
+        "directionality": "directed"
+      }
+    },
+    {
+      "id": "n8",
+      "fromId": "n2",
+      "toId": "n5",
+      "type": "PURCHASED_AT",
+      "properties": {
+        "transactionId": "751133",
+        "transactionDateTime": "2021-04-12T15:32:22Z",
+        "amount": "9849.265683"
+      },
+      "style": {}
+    },
+    {
+      "id": "n9",
+      "type": "PURCHASED_AT",
+      "style": {},
+      "properties": {
+        "transactionID": "433521",
+        "transactionDateTime": "2021-01-26T05:39:22Z",
+        "amount": "16392.61825"
+      },
+      "fromId": "n2",
+      "toId": "n7"
+    },
+    {
+      "id": "n10",
+      "type": "TRANSFERRED_TO",
+      "style": {
+        "directionality": "directed"
+      },
+      "properties": {
+        "transactionId": "377610",
+        "transactionDateTime": "2021-04-21T03:09:06Z",
+        "amount": "193772.0259"
+      },
+      "toId": "n1",
+      "fromId": "n8"
+    },
+    {
+      "id": "n11",
+      "type": "HAS_ACCOUNT",
+      "style": {},
+      "properties": {},
+      "fromId": "n10",
+      "toId": "n8"
+    }
+  ]
+}

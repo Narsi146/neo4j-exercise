@@ -2,6 +2,8 @@
 
 ## Key problems / questions to solve
 
+Below questions will be used to define data model - nodes and relationships.
+
 1. Top 5 customers in terms of card purchases (max. amount)
 
 2. Top 5 merchant in terms of card purchases (max. amount)
@@ -49,9 +51,15 @@ Below is the data model, the json export can found at
 ![Data Model](datamodel/Bank_customer_transaction.png)
 \
 \
+
+Below is a sample instance model:
+
+![InstanceModel](datamodel/Bank_customer_transaction_instance_model.png)
+\
+\
 Below are the considerations for the data model:
-- Account and Card have been separated to enable future account and card additions to a customer
-- Customer address can be separated out as separate entity but in this use case is limited need for address info, hence not loaded to graph database.
+- Account and Card nodes have been separated to enable for future account and card additions to a customer.
+- Customer address can be separated out as separate node but in this use case there is limited need for address info - hence address data was not loaded to graph database.
 - Account and Card can have relationship link (for eg. sharing customer number) if there are more transfer to purchase relationship analysis.
 
 ## Script for Loading Data
@@ -59,36 +67,36 @@ Below are the considerations for the data model:
 The data ingestion has been performed with both Cypher (csv) and Python:
 
 - `loaddata_explore\csv` - contains cypher based dataload and exploration queries.
-    - `load_csv.cyp` - is used to load data
-    - `exploratory_queries.cyp` - are the queries used for exploration\ 
+    - `load_csv.cyp` - is used to load data.
+    - `exploratory_queries.cyp` - are the queries used for exploration.
 - `loaddata_explore\python` - contains python based dataload and exploration queries.
     - `data` - folder contains main data load files: 
-        - **`driver.py`** that returns driver class instance
-        - **`loaddata.py`** downloads and loads the file - where main function acts as orchestration
-    - `tests` - contains the tests to both driver and loaded data
-    - **`Explore.ipynb`** - contains the result of exploratory queries executed
-    - `black` - package has been used for formatting
-    - `flake8` - package has been used for linting
-    - `requirements.txt` - packages used for coding
-    -  `env.example` - sample environment file
+        - **`driver.py`** that returns driver class instance.
+        - **`loaddata.py`** downloads and loads the file - where main function acts as orchestration.
+    - `tests` - contains the tests to both driver and loaded data.
+    - **`Explore.ipynb`** - contains the result of exploratory queries executed.
+    - `black` - package has been used for formatting.
+    - `flake8` - package has been used for linting.
+    - `requirements.txt` - python packages used for the exercise.
+    - `env.example` - sample environment file.
 
 ### Steps for executing python code:
 
-1. **Load Data** - To load follow below steps:
+1. **Load Data** - To load data follow below steps:
     - Ensure Neo4j Enterprise is up and running.
-    - Update Neo4j URL, User and Pass in `.env.example`
-    - Copy `.env.example' to .env
-    - Execute `loaddata.py` python file
+    - Update Neo4j URL, User and Pass in `.env.example`.
+    - Copy `.env.example' to .env.
+    - Execute `loaddata.py` python file.
     - Check database for data.
-2.  **Testing** - to test driver and data run below steps:
-    - Update syspath in `tests/conftest.py` and path in `tests\02_test_data_load.py`
+2.  **Testing** - to test driver and data, run below steps:
+    - Update syspath in `tests/conftest.py` and path in `tests\02_test_data_load.py`.
     - Execute `tests\01_test_neo4j_connectivity.py` file for testing driver.
-    - Execute `tests\02_test_data_load.py` file to test loaded data
+    - Execute `tests\02_test_data_load.py` file to test loaded data.
         - Note: the above test will load data as it executes `loaddata.py`, comment `test_load_data` test to stop loading data.
 
 ## Exploratory Queries
 
-Once Data is loaded execute the jupyter note at `loadata_explore/python/Explore.ipynb` to gather results of the 5 exploratory queries.
+Once Data is loaded, execute the jupyter notebook at `loadata_explore/python/Explore.ipynb` to gather results of the 5 exploratory queries.
 
 ##### Below is a snapshot of results for the 5 queries:
 
@@ -111,4 +119,4 @@ Once Data is loaded execute the jupyter note at `loadata_explore/python/Explore.
 - No Index were set, but is a good practice to set index per node that helps identify unique node. A good example would be CIF for Customer table.
 - Data model may vary based on use cases.
 - The data load and exploration, can also be executed using cypher queries.
-- Visual Studio Code was used for the development.
+- Visual Studio Code was used for the development and JupyterHub for running `Explore.ipynb`. 
