@@ -49,7 +49,7 @@ Below is the data model, the json export can found at
 \
 \
 ![Data Model](datamodel/Bank_customer_transaction.png)
-\
+
 \
 
 Below is a sample instance model:
@@ -86,6 +86,7 @@ The data ingestion has been performed with both Cypher (csv) and Python:
     - Ensure Neo4j Enterprise is up and running.
     - Update Neo4j URL, User and Pass in `.env.example`.
     - Copy `.env.example' to .env.
+    - create a python virtual environment with python version 3.9 and load the packages in requirements.txt
     - Execute `loaddata.py` python file.
     - Check database for data.
 2.  **Testing** - to test driver and data, run below steps:
@@ -116,7 +117,7 @@ Once Data is loaded, execute the jupyter notebook at `loadata_explore/python/Exp
 ![Result5](exploratory_queries_results_images/query_5.JPG)
 
 #### Considerations for the exercise:
-- No Index were set, but is a good practice to set index per node that helps identify unique node. A good example would be CIF for Customer table.
-- Data model may vary based on use cases.
-- The data load and exploration, can also be executed using cypher queries.
+- No Index were set, but is a good practice to set index per node that helps uniquely identify a node. A good example would be CIF for Customer table.
+- Data model here has been based on use cases.
+- The data load and exploration, can also be executed using as well cypher queries.
 - Visual Studio Code was used for the development and JupyterHub for running `Explore.ipynb`. 

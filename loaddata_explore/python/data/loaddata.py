@@ -77,7 +77,7 @@ def insert_data(query, rows, conn=None, db=None):
 if __name__ == "__main__":
     """
     Main orchestration function to download data and load it into
-    Neo4j database.
+    Neo4j database. Data will loaded if url exists.
     """
     load_dotenv()
 
