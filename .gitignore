@@ -1,1 +1,7 @@
 test.txt
+test-env/*
+.env
+__pycache__/*
+.pytest_cache/*
+*.pyc
+.ipynb_checkpoints

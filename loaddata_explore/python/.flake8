@@ -1,0 +1,8 @@
+[flake8]
+ignore = D203
+max-line-length = 80
+exclude = __pycache__,.env,.pytest
+per-file-ignores =
+    loaddata.py:F821,E501
+    conftest.py:E402
+    02_test_data_load.py:E402,E501
