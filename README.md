@@ -50,7 +50,6 @@ Below is the data model, the json export can found at
 \
 ![Data Model](datamodel/Bank_customer_transaction.png)
 
-\
 
 Below is a sample instance model:
 
